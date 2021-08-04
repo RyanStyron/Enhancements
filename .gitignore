@@ -1,0 +1,9 @@
+#Settings files
+.settings
+.project
+
+#Classpath
+.classpath
+
+#Binary files
+bin
