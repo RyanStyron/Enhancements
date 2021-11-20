@@ -1,11 +1,32 @@
 # =Enhancements= #
 #----------------------------------#
+
 # Moshpit #
 
+# Health gained from soup consumption (integer).
+soup-regen: 12
+
+# Time delay between soup regeneration in seconds (integer).
+time-delay: 25
+
+# Max player health (double).
+max-health: 40.0
+
 #----------------------------------#
+
 # Minigames #
 
 #----------------------------------#
+
 # Environment #
+
+# General environmental damage modifier (integer). 
+modifier: 5
+
+# List of worlds where the damage modifier is not enabled.
+exempted-worlds: ["example_world", "example_world_1"]
+
+# List of damage events not modified by the general modifier.
+exempted-causes: [ENTITY_ATTACK, ENTITY_EXPLOSION]
 
 #----------------------------------#

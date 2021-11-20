@@ -5,7 +5,8 @@ import org.bukkit.plugin.PluginManager;
 
 import net.heliosphere.enhancements.environment.DamageModifier;
 import net.heliosphere.enhancements.moshpit.EventCanceler;
-import net.heliosphere.enhancements.moshpit.Inventory;
+import net.heliosphere.enhancements.moshpit.RegenSoup;
+import net.heliosphere.enhancements.moshpit.Scheduler;
 
 public class Register {
 
@@ -28,7 +29,8 @@ public class Register {
         manager.registerEvents(new DamageModifier(), plugin);
 
         /** Moshpit */
+        Scheduler.enable();
         manager.registerEvents(new EventCanceler(), plugin);
-        manager.registerEvents(new Inventory(), plugin);
+        manager.registerEvents(new RegenSoup(), plugin);
     }
 }
