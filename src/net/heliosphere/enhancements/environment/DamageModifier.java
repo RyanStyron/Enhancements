@@ -35,7 +35,7 @@ public class DamageModifier implements Listener {
 
         if (!exemptedWorlds.contains(event.getEntity().getWorld())) {
             if (!exemptedCauses.contains(cause))
-                event.setDamage(damage * config.getInt("modifier"));
+                event.setDamage(damage * config.getDouble("modifier"));
             if (cause == DamageCause.VOID)
                 event.setDamage(1000);
         }

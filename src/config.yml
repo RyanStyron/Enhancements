@@ -35,8 +35,8 @@ coin-stacking-enabled: true
 
 # Environment #
 
-# General environmental damage modifier (integer). 
-modifier: 5
+# General environmental damage modifier (double). 
+modifier: 1.5
 
 # List of worlds where the damage modifier is not enabled.
 exempted-worlds: ["example_world", "example_world_1"]
