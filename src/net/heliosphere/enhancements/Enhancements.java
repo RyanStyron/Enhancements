@@ -14,7 +14,7 @@ public class Enhancements extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        
+
         saveDefaultConfig();
         new Register(this);
         Bukkit.getLogger().info("Enhancements loaded.");
