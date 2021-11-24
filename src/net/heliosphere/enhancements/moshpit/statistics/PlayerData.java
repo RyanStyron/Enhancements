@@ -18,7 +18,6 @@ public class PlayerData implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        Player killer = null;
 
         if (player.getWorld() == Moshpit.world()) {
             PlayerDataFile data = new PlayerDataFile(player);
@@ -26,11 +25,8 @@ public class PlayerData implements Listener {
             data.setData(Data.DEATHS, data.getData(Data.DEATHS) + 1);
             data.setData(Data.STREAK, 0);
 
-            if (player.getKiller() != null)
-                killer = player.getKiller();
-
-            if (killer != null) {
-                data = new PlayerDataFile(killer);
+            if (player.getKiller() != null) {
+                data = new PlayerDataFile(player.getKiller());
 
                 data.setData(Data.KILLS, data.getData(Data.KILLS) + 1);
                 data.setData(Data.STREAK, data.getData(Data.STREAK) + 1);
