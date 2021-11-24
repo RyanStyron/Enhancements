@@ -9,11 +9,14 @@ moshpit-world: "hs_moshpit"
 # Distance from the world spawn where damage and certain events are canceled (integer).
 spawn-distance: 19
 
+# Time delay between a player respawning and leaving the spawn radius in seconds (integer).
+respawn-delay: 5
+
 # Health gained from soup consumption (integer).
 soup-regen: 12
 
-# Time delay between soup regeneration in seconds (integer).
-time-delay: 25
+# Time delay between soup consumption and regeneration in seconds (integer).
+soup-delay: 25
 
 # Max player health (double).
 max-health: 40.0

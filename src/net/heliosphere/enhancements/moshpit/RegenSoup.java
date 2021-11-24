@@ -92,7 +92,7 @@ public class RegenSoup implements Listener {
                                 } else
                                     missingSoupMap.remove(player);
                             }
-                        }, (config.getInt("time-delay")) * 20);
+                        }, (config.getInt("soup-delay")) * 20);
                     }
                 }
             }
