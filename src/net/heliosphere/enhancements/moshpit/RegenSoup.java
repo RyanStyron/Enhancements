@@ -9,6 +9,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,7 +26,8 @@ import net.heliosphere.enhancements.utils.WorldUtils.Moshpit;
 
 public class RegenSoup implements Listener {
 
-    private Enhancements instance = Enhancements.getInstance();
+    private Enhancements plugin = Enhancements.getInstance();
+    private FileConfiguration config = plugin.getConfig();
     private HashMap<Player, List<Integer>> missingSoupMap = new HashMap<Player, List<Integer>>();
 
     @SuppressWarnings("deprecation")
@@ -38,7 +40,7 @@ public class RegenSoup implements Listener {
         PlayerInventory inventory = player.getInventory();
 
         if (world == Moshpit.world()) {
-            if (location.distanceSquared(world.getSpawnLocation()) > 361) {
+            if (location.distanceSquared(world.getSpawnLocation()) > Moshpit.spawnDistanceSquared()) {
                 if (action == Action.RIGHT_CLICK_BLOCK || action == Action.RIGHT_CLICK_AIR) {
                     ItemStack item = inventory.getItemInMainHand();
 
@@ -54,7 +56,7 @@ public class RegenSoup implements Listener {
                         double playerHealth = player.getHealth();
                         int inventorySlot = inventory.getHeldItemSlot();
                         ItemStack bowl = new ItemStack(Material.BOWL, 1);
-                        int regenHealth = instance.getConfig().getInt("soup-regen");
+                        int regenHealth = plugin.getConfig().getInt("soup-regen");
 
                         if (playerHealth + regenHealth <= playerMaxHealth)
                             player.setHealth(playerHealth + regenHealth);
@@ -72,7 +74,7 @@ public class RegenSoup implements Listener {
                         for (Player onlinePlayer : Moshpit.world().getPlayers())
                             onlinePlayer.playSound(location, Sound.ENTITY_GENERIC_EAT, 1.0F, 1.0F);
 
-                        Bukkit.getScheduler().scheduleSyncDelayedTask(instance, new Runnable() {
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
                             @Override
                             public void run() {
                                 /*
@@ -90,7 +92,7 @@ public class RegenSoup implements Listener {
                                 } else
                                     missingSoupMap.remove(player);
                             }
-                        }, (instance.getConfig().getInt("time-delay")) * 20);
+                        }, (config.getInt("time-delay")) * 20);
                     }
                 }
             }
@@ -118,7 +120,8 @@ public class RegenSoup implements Listener {
 
                     killer.playSound(killer.getLocation(), Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     killer.getInventory().setItem(inventorySlot, ItemUtils.moshpitStewItem());
-                    killerInventorySlots.remove(MathUtils.findIndexInList(missingSoupMap.get(killer), inventorySlot));
+                    missingSoupMap.get(killer)
+                            .remove(MathUtils.findIndexInList(missingSoupMap.get(killer), inventorySlot));
                 }
             }
         }
@@ -129,7 +132,7 @@ public class RegenSoup implements Listener {
         World world = location.getWorld();
 
         if (location.getWorld() == Moshpit.world()) {
-            if (location.distanceSquared(world.getSpawnLocation()) <= 361)
+            if (location.distanceSquared(world.getSpawnLocation()) <= Moshpit.spawnDistanceSquared())
                 for (int slot = 3; slot <= 6; slot++)
                     player.getInventory().setItem(slot, ItemUtils.moshpitStewItem());
         }

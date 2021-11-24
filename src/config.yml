@@ -3,6 +3,12 @@
 
 # Moshpit #
 
+# Name of the Moshpit world.
+moshpit-world: "hs_moshpit"
+
+# Distance from the world spawn where damage and certain events are canceled (integer).
+spawn-distance: 19
+
 # Health gained from soup consumption (integer).
 soup-regen: 12
 
@@ -11,6 +17,15 @@ time-delay: 25
 
 # Max player health (double).
 max-health: 40.0
+
+# Allows players to gain coins through killing others (boolean).
+coins-enabled: true
+
+# The amount of coins gained per kill (integer).
+coins-per-kill: 1
+
+# Sets coins gained equal to the player's streak added to coins-per-kill (boolean). 
+coin-stacking-enabled: true
 
 #----------------------------------#
 
