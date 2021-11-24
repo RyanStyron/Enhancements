@@ -49,7 +49,7 @@ public class EventCanceler implements Listener {
 
     @EventHandler
     public void onPlayerDropItem(PlayerDropItemEvent event) {
-        if (isCancellable(true, event.getPlayer().getLocation()))
+        if (isCancellable(false, event.getPlayer().getLocation()))
             event.setCancelled(true);
     }
 
