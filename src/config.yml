@@ -6,9 +6,6 @@
 # Name of the Moshpit world.
 moshpit-world: "hs_moshpit"
 
-# Distance from the world spawn where damage and certain events are canceled (integer).
-spawn-distance: 19
-
 # Cooridinates between which the region of spawn is defined [x1, y1, z1, x2, y2, z2].
 spawn-region: [988, 83, 1012, 1011, 74, 1035]
 
@@ -23,9 +20,6 @@ soup-delay: 25
 
 # Max player health (double).
 max-health: 40.0
-
-# Allows players to gain coins through killing others (boolean).
-coins-enabled: true
 
 # The amount of coins gained per kill (integer).
 coins-per-kill: 1

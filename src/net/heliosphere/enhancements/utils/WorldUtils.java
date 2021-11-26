@@ -19,10 +19,6 @@ public class WorldUtils {
             return Bukkit.getWorld(config.getString("moshpit-world"));
         }
 
-        public static int spawnDistance() {
-            return config.getInt("spawn-distance");
-        }
-
         public static boolean isWithinSpawn(Location location) {
             List<Integer> spawnCoords = config.getIntegerList("spawn-region");
             Location border1 = new Location(world(), spawnCoords.get(0), spawnCoords.get(1), spawnCoords.get(2));

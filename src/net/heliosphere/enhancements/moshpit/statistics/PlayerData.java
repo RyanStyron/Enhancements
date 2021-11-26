@@ -33,15 +33,12 @@ public class PlayerData implements Listener {
 
                 if (data.getData(Data.STREAK) > data.getData(Data.HIGHSTREAK))
                     data.setData(Data.HIGHSTREAK, data.getData(Data.STREAK));
+                int coinsGained = config.getInt("coins-per-kill");
 
-                if (config.getBoolean("coins-enabled")) {
-                    int coinsGained = config.getInt("coins-per-kill");
+                data.setData(Data.COINS, data.getData(Data.COINS) + coinsGained);
 
-                    data.setData(Data.COINS, data.getData(Data.COINS) + coinsGained);
-
-                    if (config.getBoolean("coin-stacking-enabled"))
-                        data.setData(Data.COINS, data.getData(Data.COINS) + data.getData(Data.STREAK) - 1);
-                }
+                if (coinsGained != 0 && config.getBoolean("coin-stacking-enabled"))
+                    data.setData(Data.COINS, data.getData(Data.COINS) + data.getData(Data.STREAK) - 1);
             }
         }
     }
