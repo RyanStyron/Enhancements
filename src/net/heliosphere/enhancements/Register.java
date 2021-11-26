@@ -8,6 +8,7 @@ import net.heliosphere.enhancements.moshpit.EventCanceler;
 import net.heliosphere.enhancements.moshpit.RegenSoup;
 import net.heliosphere.enhancements.moshpit.Scheduler;
 import net.heliosphere.enhancements.moshpit.statistics.PlayerData;
+import net.heliosphere.enhancements.utils.FileManager;
 
 public class Register {
 
@@ -16,7 +17,10 @@ public class Register {
 
     public Register(Plugin plugin) {
         this.plugin = plugin;
-        manager = plugin.getServer().getPluginManager();
+        this.manager = plugin.getServer().getPluginManager();
+
+        plugin.saveDefaultConfig();
+        new FileManager("messages");
 
         registerCommands();
         registerEvents();

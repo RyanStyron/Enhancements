@@ -1,0 +1,20 @@
+# =Enhancements Messages= #
+#----------------------------------#
+# [NOTE: Do not edit or remove the angular brackets or text within them when they appear.]
+
+# General #
+
+# Sent when a player does not have permission to execute a command or subcommand.
+permission-error: "&cYou do not have permission to do this."
+
+# Specifies the usage of a command.
+argument-error: "&cA valid amount of arguments must be provided. Usage: <usage>"
+
+#----------------------------------#
+
+# Moshpit #
+
+# Sent when a player enters the Moshpit prior to their respawn delay ending.
+respawn-error: "&cYou must wait <remaining-seconds> seconds before re-entering the Moshpit!"
+
+#----------------------------------#
