@@ -40,7 +40,7 @@ public class RegenSoup implements Listener {
         PlayerInventory inventory = player.getInventory();
 
         if (world == Moshpit.world()) {
-            if (location.distanceSquared(world.getSpawnLocation()) > Moshpit.spawnDistanceSquared()) {
+            if (!Moshpit.isWithinSpawn(location)) {
                 if (action == Action.RIGHT_CLICK_BLOCK || action == Action.RIGHT_CLICK_AIR) {
                     ItemStack item = inventory.getItemInMainHand();
 
@@ -129,10 +129,9 @@ public class RegenSoup implements Listener {
 
     public static void setSoups(Player player) {
         Location location = player.getLocation();
-        World world = location.getWorld();
 
         if (location.getWorld() == Moshpit.world()) {
-            if (location.distanceSquared(world.getSpawnLocation()) <= Moshpit.spawnDistanceSquared())
+            if (Moshpit.isWithinSpawn(location))
                 for (int slot = 3; slot <= 6; slot++)
                     player.getInventory().setItem(slot, ItemUtils.moshpitStewItem());
         }

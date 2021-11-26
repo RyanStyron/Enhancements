@@ -2,7 +2,6 @@ package net.heliosphere.enhancements.moshpit;
 
 import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,12 +17,11 @@ public class EventCanceler implements Listener {
 
     private boolean isCancellable(boolean spawnRegionOnly, Location location) {
         boolean cancellable = false;
-        World world = location.getWorld();
 
-        if (world == Moshpit.world()) {
+        if (location.getWorld() == Moshpit.world()) {
             if (!spawnRegionOnly)
                 cancellable = true;
-            else if (location.distanceSquared(world.getSpawnLocation()) <= Moshpit.spawnDistanceSquared())
+            else if (Moshpit.isWithinSpawn(location))
                 cancellable = true;
         }
         return cancellable;
