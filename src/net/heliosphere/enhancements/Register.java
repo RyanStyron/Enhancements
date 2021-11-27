@@ -6,6 +6,7 @@ import org.bukkit.plugin.PluginManager;
 import net.heliosphere.enhancements.environment.DamageModifier;
 import net.heliosphere.enhancements.moshpit.EventCanceler;
 import net.heliosphere.enhancements.moshpit.RegenSoup;
+import net.heliosphere.enhancements.moshpit.RespawnDelay;
 import net.heliosphere.enhancements.moshpit.Scheduler;
 import net.heliosphere.enhancements.moshpit.statistics.PlayerData;
 import net.heliosphere.enhancements.utils.FileManager;
@@ -38,5 +39,6 @@ public class Register {
         manager.registerEvents(new PlayerData(), plugin);
         manager.registerEvents(new EventCanceler(), plugin);
         manager.registerEvents(new RegenSoup(), plugin);
+        manager.registerEvents(new RespawnDelay(), plugin);
     }
 }
