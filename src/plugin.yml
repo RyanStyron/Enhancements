@@ -1,4 +1,5 @@
 name: Enhancements
-version: 1.4.1
+version: 1.4.9
 main: net.heliosphere.enhancements.Enhancements
 api-version: 1.16
+softdepend: [Vault]
